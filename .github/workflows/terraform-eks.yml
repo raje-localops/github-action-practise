@@ -68,8 +68,8 @@ jobs:
         run: terraform plan -out=tfplan -input=false
         env:
           TF_VAR_cluster_name: my-eks-cluster
-          TF_VAR_cluster_version: "1.29"
-          TF_VAR_environment: production
+          TF_VAR_cluster_version: "1.30"
+          TF_VAR_environment: qa
 
       - name: Show Plan Summary (on PR)
         if: github.event_name == 'pull_request'
@@ -105,7 +105,7 @@ jobs:
         if: |
           (github.ref == 'refs/heads/main' && github.event_name == 'push') ||
           (github.event.inputs.action == 'apply')
-        run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name my-eks-cluster --role-arn arn:aws:iam::225989360872:role/gh-actions-role
+        run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name my-eks-cluster
 
       - name: Verify cluster
         if: |
