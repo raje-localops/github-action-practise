@@ -105,11 +105,7 @@ jobs:
         if: |
           (github.ref == 'refs/heads/main' && github.event_name == 'push') ||
           (github.event.inputs.action == 'apply')
-        run: |
-          aws eks update-kubeconfig \
-            --region ${{ env.AWS_REGION }} \
-            --name my-eks-cluster
-            --role-arn arn:aws:iam::225989360872:role/gh-actions-role
+        run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name my-eks-cluster --role-arn arn:aws:iam::225989360872:role/gh-actions-role
 
       - name: Verify cluster
         if: |
