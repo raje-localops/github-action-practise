@@ -14,7 +14,7 @@ terraform {
 
   # Remote state in S3 — create this bucket manually first
   backend "s3" {
-    bucket = "my-terraform-state-bucket-24032026"   
+    bucket = "my-terraform-state-bucket-24032026"
     key    = "eks/terraform.tfstate"
     region = "ap-south-1"
   }
