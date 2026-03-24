@@ -20,7 +20,11 @@ on:
           - plan
           - apply
           - destroy
-
+          
+# THIS BLOCK IS MANDATORY — without it OIDC won't work
+permissions:
+  id-token: write      # allows GitHub to generate the OIDC token
+  contents: read       # allows checkout
 env:
   AWS_REGION: ap-south-1         # change to your region
   TF_VERSION: 1.7.0
@@ -41,7 +45,7 @@ jobs:
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_ROLE_NAME
+          role-to-assume: arn:aws:iam::225989360872:role/gh-actions-role
           aws-region: ap-south-1
           
       - name: Setup Terraform
