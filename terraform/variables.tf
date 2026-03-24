@@ -13,7 +13,7 @@ variable "cluster_version" {
 variable "environment" {
   description = "Environment name"
   type        = string
-  default     = "production"
+  default     = "qa"
 }
 
 variable "aws_region" {
